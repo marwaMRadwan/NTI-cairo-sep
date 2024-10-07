@@ -1,0 +1,148 @@
+/* div{
+    width: 10rem;
+    height: 10rem;
+    background-color: black;
+}
+#one{
+    background-color: blue;
+}
+.x{
+    background-color: red;
+} */
+
+/* .card{
+    width: 10rem;
+    height: 10rem;
+    border:2px solid black;
+} */
+/* .card:hover button{
+    background-color: red;
+}
+.card button:hover{
+    background-color: blue;
+}
+.card button:focus{
+    background-color: black;
+}
+input{
+    background-color: aquamarine;
+    border:none;
+}
+input:focus{
+    outline: none;
+    box-shadow: 2px 2px 3px black;
+} */
+ /* .card + h2{
+    color: red;
+ } */
+  /* .card ~ h2{
+    color: blue;
+  } */
+
+  /* .card > h2{
+    color: green;
+  } */
+/* ::selection{
+    background-color:transparent;
+    text-shadow: 2px 2px 5px red;
+}
+::placeholder{
+    color:blue
+}
+body{
+    height: 2000px;
+} */
+/* ::-webkit-scrollbar {
+    width:3px
+}
+::-webkit-scrollbar-thumb {
+    background-color: red;
+} */
+
+/* input[type=text]{
+    background-color: aquamarine;
+}
+input[type=password]{
+    background-color: rebeccapurple;
+}
+.card h2:first-child{
+    color: green;
+}
+.card h2:last-child{
+    color:red
+}
+.card h2:nth-child(odd){}
+.card h2:nth-child(even){}
+.card h2:nth-child(3){}
+
+html {
+    scrollbar-width: thin;
+}
+/* Change scrollbar colors */
+/*html {
+    scrollbar-color: #870707 #fff;
+}
+div::first-line{
+    color: #870707;
+}
+div::first-letter{
+    color: blue;
+} */
+
+/* div::before{
+    content: "";
+    width: 5rem;
+    height: 5rem;
+    background-color: blue;
+    display:inline-block;
+} */
+ body{
+    perspective: 600px;
+ }
+/* h2{
+    height: 7.5rem;
+    background-color: blue;
+}
+div{
+    height: 10rem;
+    width: 10rem;
+    border:2px solid black;
+    background-color: red; */
+    /* transform: rotate(360deg); */
+    /* transform: scale(2) */
+    /* transform: skew(45deg); */
+    /* transition: all 0.5s;
+    backface-visibility: hidden;
+    margin: 5px auto;
+}
+div:hover{ */
+    /* transform: translate(0rem,2rem); */
+    /* transform: rotate(360deg);
+    width: 20rem; */
+    /* transform: rotateY(180deg);
+} */
+
+.card{
+    width: 15rem;
+    height: 15rem;
+    position: relative;
+}
+#front, #back{
+    position: absolute;
+    width:100%;    height: 100%;
+    backface-visibility: hidden;
+    transition: all 0.5s;
+}
+#front{
+    background-color: red;
+}
+#back{
+    background-color: green; transform: rotateX(180deg);
+}
+
+.card:hover #front{
+    transform: rotateX(180deg) ;
+}
+.card:hover #back{
+    transform: rotateX(0deg) ;
+}
