@@ -19,4 +19,4 @@ a{ text-decoration: none;}
 .align-items-flexstart{ align-items: flex-start;}
 h1{ font-size:2.1rem }
 .icons{ text-align: end;}
-.icons a{ padding-inline-end: 3%;}
+.icons a{ padding-inline-end: 3%; font-size: 1.3rem;}
