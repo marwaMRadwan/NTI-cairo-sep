@@ -15,15 +15,30 @@ products.forEach(pro=> {
     option.textContent = pro.name
     select.appendChild(option)
 })
-
-// select.addEventListener("change", function() {
-$('.select2').on('change', function () {
+const calcPrice = () => {
     const selectedValue = $('.select2').val();
     let res = products.find(pro=> pro.sku==selectedValue)
-    console.log(res)
-    document.querySelector("#price").value= res.price
-    document.querySelector("#quantity").value= 1
-    document.querySelector("#sub").value = res.price
-    document.querySelector("#dis").value = 0
-    
+    let p = document.querySelector("#price")
+    let q = document.querySelector("#quantity")
+    let sub = document.querySelector("#sub")
+    let d = document.querySelector("#dis")
+    p.value= p.value || res.price
+    q.value= q.value || 1
+    d.value = d.value || 0
+    sub.value = p.value * q.value * (100-d.value)/100
+
+}
+// select.addEventListener("change", function() {
+$('.select2').on('change', function () {
+    calcPrice()
+})
+document.querySelector("#dis").addEventListener('input', function(){
+    calcPrice()    
+})
+document.querySelector("#quantity").addEventListener('input', function(){
+    calcPrice()    
+})
+
+document.querySelector("#price").addEventListener('input', function(){
+    calcPrice()    
 })
