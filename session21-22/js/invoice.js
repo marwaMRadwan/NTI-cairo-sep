@@ -7,76 +7,72 @@ let products = [
     {sku:982, name:"product 6", price:4000},
     {sku:147, name:"product 7", price:3000},
 ]
-
-let select = document.querySelector(".pro")
-products.forEach(pro=> {
-    let option = document.createElement("option")
-    option.value = pro.sku
-    option.textContent = pro.name
-    select.appendChild(option)
-})
-const calcPrice = () => {
-    const selectedValue = $('.pro').val();
+const setProductInSelect = (select) => {
+    products.forEach(pro=> {
+        let option = createCustomEle(select, "option", false, pro.name)
+        option.value = pro.sku
+    })
+}
+const calcPrice = (select,  price, dis, subtotal , quantity) => {
+    console.log(select.value)
+    const selectedValue = select.value;
     let res = products.find(pro=> pro.sku==selectedValue)
-    let p = document.querySelector(".price")
-    let q = document.querySelector(".quantity")
-    let sub = document.querySelector(".sub")
-    let d = document.querySelector(".dis")
+    let p = price
+    let q = quantity
+    let sub = subtotal
+    let d = dis
     p.value= p.value || res.price
     q.value= q.value || 1
     d.value = d.value || 0
     sub.value = p.value * q.value * (100-d.value)/100
-
+}
+const createCustomEle = (parent, ele, classes, txt) => {
+    const el = document.createElement(ele)
+    parent.appendChild(el)
+    if(classes) el.classList = classes
+    if(txt) el.innerHTML = txt
+    return el
+}
+const setAttributeForElement = (ele, attrName, attrVal) => {
+    ele.setAttribute(attrName, attrVal)
 }
 const cloneRow = () => {
     const tbody = document.querySelector("tbody")
-    let tr = document.createElement('tr')
-    tbody.appendChild(tr)
-    let td = document.createElement("td")
-    tr.appendChild(td)
-    let select = document.createElement("select")
-    select.classList="form-control form-select pro"
-    td.appendChild(select)
-    let option = document.createElement("option")
-    option.innerHTML="please choose a product"
+    let tr =createCustomEle(tbody, "tr",false, false)
+    let td = createCustomEle(tr, "td", null, false)
+    let select = createCustomEle(td, "select","form-control form-select pro", null )
+    let option = createCustomEle(select, "option", false, "please choose a product")
     option.setAttribute("selected", true)
     option.setAttribute("disabled", true)
-    select.appendChild(option)
-    products.forEach(pro=> {
-        let option = document.createElement("option")
-        option.value = pro.sku
-        option.textContent = pro.name
-        select.appendChild(option)
+    setProductInSelect(select)
+    td = createCustomEle(tr, "td", null, null)
+    let quantity = createCustomEle(td, "input", "quantity form-control", false)
+    quantity.name = "quantity"
+    td = createCustomEle(tr, "td", null, null)
+    let price = createCustomEle(td, "input", "price form-control", false)
+    price.name = "price"
+    td = createCustomEle(tr, "td", null, null)
+    let dis = createCustomEle(td, "input", "dis form-control", false)
+    dis.name = "dis"
+    td = createCustomEle(tr, "td", null, null)
+    let sub = createCustomEle(td, "input", "sub form-control", false)
+    sub.name = "sub"
+    select.addEventListener('change', function () {
+         calcPrice(select, price, dis, sub , quantity)
     })
-    
-//     <td>
-//         <input name="quantity" class="quantity form-control">
-//     </td>
-//     <td>
-//         <input name="price" class="form-control price">
-//     </td>
-//     <td>
-//         <input name="dis" class="form-control dis">
-//     </td>
-//     <td>
-//         <input name="sub"  class="form-control sub" disabled>
-//     </td>                    
+    dis.addEventListener('input', function(){
+        calcPrice(select, price, dis, sub , quantity)
+     })
+    quantity.addEventListener('input', function(){ 
+        calcPrice(select, price, dis, sub , quantity)
+     })
+    price.addEventListener('input', function(){
+        calcPrice(select, price, dis, sub , quantity)
+     })
 }
+
+cloneRow()
 document.querySelector('#add').addEventListener("click", ()=> 
     cloneRow()
 )
 
-// select.addEventListener("change", function() {
-document.querySelector('.pro').addEventListener('change', function () {
-    calcPrice()
-})
-document.querySelector(".dis").addEventListener('input', function(){
-    calcPrice()    
-})
-document.querySelector(".quantity").addEventListener('input', function(){
-    calcPrice()    
-})
-
-document.querySelector(".price").addEventListener('input', function(){
-    calcPrice()    
-})
