@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>invoice</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
+</head>
+<body>
+    <section class="my-5 container">
+        <div class="mb-3 text-end">
+            <button class="btn btn-primary" id="add">Add New Item</button>
+        </div>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <td>title</td>
+                    <td>quantity</td>
+                    <td>price</td>
+                    <td>discount</td>
+                    <td>subtotal</td>
+                </tr>
+            </thead>
+            <tbody>
+<tr>
+    <td>
+        <select class="form-control form-select pro">
+         <option selected disabled>please choose a product</option>
+        </select>
+    </td>
+    <td>
+        <input name="quantity" class="quantity form-control">
+    </td>
+    <td>
+        <input name="price" class="form-control price">
+    </td>
+    <td>
+        <input name="dis" class="form-control dis">
+    </td>
+    <td>
+        <input name="sub"  class="form-control sub" disabled>
+    </td>                    
+</tr>
+            </tbody>
+            
+        </table>
+    
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.select2').select2();
+        });
+    </script>
+    <script src="js/invoice.js"></script>
+</body>
+</html>
